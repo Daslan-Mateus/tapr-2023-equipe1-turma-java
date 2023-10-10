@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MicroservturmaApplication<microservturma>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.edu.univille.microservturma.MicroservturmaApplication",
+            "projectName": "microservturma",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
