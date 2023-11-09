@@ -1,4 +1,4 @@
-package br.edu.univille.entity;
+package br.edu.univille.microservturma.entity;
 
 import org.springframework.data.annotation.Id;
 
