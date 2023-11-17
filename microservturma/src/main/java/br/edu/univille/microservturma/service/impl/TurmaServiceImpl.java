@@ -35,7 +35,7 @@ public class TurmaServiceImpl implements TurmaService {
 
     @Override
     public Turma saveNew(Turma turma) {
-        turma.setId(null);
+        turma.setIdTurma(null);
         return repository.save(turma);
     }
 
@@ -46,7 +46,7 @@ public class TurmaServiceImpl implements TurmaService {
             var turmaAntigo = buscaTurmaAntigo.get();
 
             //Atualizar cada atributo do objeto antigo 
-            turmaAntigo.setTurma(turma.getTurma());
+            turmaAntigo.setIdTurma(turma.getIdTurma());
             
             return repository.save(turmaAntigo);
         }
