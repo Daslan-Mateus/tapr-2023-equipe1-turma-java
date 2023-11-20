@@ -19,7 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @Controller 
-@RequestMapping("api/v1/turma")
+@RequestMapping("api/v1/turmas")
 public class TurmaAPIController {
 
     @Autowired

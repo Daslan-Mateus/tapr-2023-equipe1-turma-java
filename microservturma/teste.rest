@@ -1,30 +1,32 @@
 ### Buscar todas as turmas
-GET http://localhost:8080/api/v1/turma
+GET http://localhost:8080/api/v1/turmas
 
-### Buscar carro pelo ID
-GET http://localhost:8080/api/v1/turma/580c1134-0409-46e9-99a5-887b8e90636f
+### Buscar Turma pelo ID
+GET http://localhost:8080/api/v1/turmas/580c1134-0409-46e9-99a5-887b8e90636f
 
-### Inserir um novo Carro
-POST http://localhost:8080/api/v1/turma
+### Inserir um novo Turma
+POST http://localhost:8080/api/v1/turmas
 Content-Type: application/json
 
 {
-  "placa": "MDB3389",
-  "modelo": { 
-    "descricao":"FIAT UNO",
-    "marca":"FIAT"
-  }
+  "nomeTurma": "Turma1",
+  "semestre": 1,
+  "representante": "Arend" 
 }
 
-### Atualizar o  Carro
-PUT http://localhost:8080/api/v1/turma/0e177dd4-4313-48a5-86d3-0796886c512a
+
+  
+    
+
+### Atualizar a Turma
+PUT http://localhost:8080/api/v1/turmas/0e177dd4-4313-48a5-86d3-0796886c512a
 Content-Type: application/json
 
 {
-  "placa": "MAS1334-2"
+  
 }
 
 
-### Remover o Carro
-DELETE  http://localhost:8080/api/v1/carros/580c1134-0409-46e9-99a5-887b8e90636f
+### Remover o Turma
+DELETE  http://localhost:8080/api/v1/turmas/580c1134-0409-46e9-99a5-887b8e90636f
 Content-Type: application/json

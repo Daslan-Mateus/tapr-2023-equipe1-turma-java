@@ -5,5 +5,5 @@
 ```
 az login -u daslan.mesquita@univille.br
 az login --use-device-code
-az ad singned-in-user show
+az ad signed-in-user show
 ```
