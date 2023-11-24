@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import io.dapr.client.DaprClient;
+import io.dapr.client.DaprClientBuilder;
 
 import br.edu.univille.microservturma.entity.Turma;
 import br.edu.univille.microservturma.repository.TurmaRepository;
@@ -14,6 +17,12 @@ import br.edu.univille.microservturma.service.TurmaService;
 public class TurmaServiceImpl implements TurmaService {
     @Autowired
     private TurmaRepository repository;
+
+    private DaprClient client = new DaprClientBuilder().build();
+    @Value("${app.component.topic.carro}")
+    private String TOPIC_NAME;
+    @Value("${app.component.service}")
+	private String PUBSUB_NAME;
 
     @Override
     public List<Turma> getAll() {
@@ -36,6 +45,7 @@ public class TurmaServiceImpl implements TurmaService {
     @Override
     public Turma saveNew(Turma turma) {
         turma.setIdTurma(null);
+        publicarAtualizacao(turma);
         return repository.save(turma);
     }
 
@@ -47,8 +57,9 @@ public class TurmaServiceImpl implements TurmaService {
 
             //Atualizar cada atributo do objeto antigo 
             turmaAntigo.setIdTurma(turma.getIdTurma());
+            turmaAntigo = repository.save(turmaAntigo);
             
-            return repository.save(turmaAntigo);
+            return turmaAntigo;
         }
         return null;
     }
@@ -64,5 +75,13 @@ public class TurmaServiceImpl implements TurmaService {
             return turma;
         }
         return null;
+    }
+
+     //método privado para publicar a atualização
+    private void publicarAtualizacao(Turma turma){
+        client.publishEvent(
+					PUBSUB_NAME,
+					TOPIC_NAME,
+					turma).block();
     }
 }
