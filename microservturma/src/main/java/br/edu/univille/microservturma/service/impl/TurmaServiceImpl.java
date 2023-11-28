@@ -19,7 +19,7 @@ public class TurmaServiceImpl implements TurmaService {
     private TurmaRepository repository;
 
     private DaprClient client = new DaprClientBuilder().build();
-    @Value("${app.component.topic.carro}")
+    @Value("${app.component.topic.turma}")
     private String TOPIC_NAME;
     @Value("${app.component.service}")
 	private String PUBSUB_NAME;

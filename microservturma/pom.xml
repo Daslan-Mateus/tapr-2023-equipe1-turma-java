@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.4</version>
+		<version>3.1.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.edu.univille</groupId>
@@ -31,19 +31,16 @@
 		<dependency>
 			<groupId>com.azure.spring</groupId>
 			<artifactId>spring-cloud-azure-starter-data-cosmos</artifactId>
-			<version>5.5.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.azure</groupId>
 			<artifactId>azure-spring-data-cosmos</artifactId>
-			<version>5.5.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.azure</groupId>
 			<artifactId>azure-identity</artifactId>
-			<version>1.10.0</version>
 		</dependency>
 
 		<dependency>

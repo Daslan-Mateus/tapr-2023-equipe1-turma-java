@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.univille.microservturma.entity.Turma;
 import br.edu.univille.microservturma.service.TurmaService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 
 import java.util.ArrayList;
 import java.util.List;
