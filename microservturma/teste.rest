@@ -5,14 +5,21 @@ GET http://localhost:8080/api/v1/turmas
 GET http://localhost:8080/api/v1/turmas/7644992e-e70a-49b6-9ff2-e6b645d307e8
 
 
-### Inserir um novo Turma
+### Inserir uma nova Turma
 POST http://localhost:8080/api/v1/turmas
 Content-Type: application/json
 
 {
-  "nomeTurma": "Turma1",
-  "semestre": 1,
-  "representante": "Arend" 
+  "nomeTurma":"Eng_Software",
+  "semestre":3,
+  "representante":"Lucas",
+  "listaAlunos":[{
+    "nome":"marcas",
+    "presenca":true,
+    "notas":8.0,
+    "matricula":1964875012
+  }]
+
 }
 
 ### Atualizar a Turma
@@ -25,5 +32,5 @@ Content-Type: application/json
 
 
 ### Remover o Turma
-DELETE  http://localhost:8080/api/v1/turmas/7644992e-e70a-49b6-9ff2-e6b645d307e8
+DELETE  http://localhost:8080/api/v1/turmas/fc61f1a6-baa9-42bb-961b-805c85bc567b
 Content-Type: application/json
