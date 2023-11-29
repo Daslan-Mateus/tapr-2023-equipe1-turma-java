@@ -41,5 +41,10 @@ public class Professor {
     public void setDisciplina(String disciplina) {
         this.disciplina = disciplina;
     }
+    public void setIdProfessor(Object object) {
+    }
+    public Object getIdprofessor() {
+        return null;
+    }
 
 }

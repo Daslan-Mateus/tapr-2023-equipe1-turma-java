@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.univille.microservturma.entity.Professor;
+import br.edu.univille.microservturma.service.ProfessorService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import org.springframework.http.ResponseEntity;
 public class ProfessorAPIController {
 
     @Autowired
-    private TurmaService service;
+    private ProfessorService service;
 
     @GetMapping
     public ResponseEntity<List<Professor>> listaProfessor (){
@@ -34,10 +35,11 @@ public class ProfessorAPIController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Professor> buscarProfessor (@PathVariable("id")  String id){
-        var turma = service.getById(id);
-        if(turma == null){
+        var professor = service.getById(id);
+        if(professor == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        
         return new ResponseEntity<Professor> (professor, HttpStatus.OK);
     }
 
