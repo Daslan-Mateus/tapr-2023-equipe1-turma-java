@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.univille.microservturma.entity.Professor;
 import br.edu.univille.microservturma.service.ProfessorService;
+import io.dapr.Topic;
+import io.dapr.client.domain.CloudEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 @Controller 
@@ -61,7 +64,7 @@ public class ProfessorAPIController {
         if(professor == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Professor> (professor, HttpStatus.OK);
+        return new ResponseEntity<Professor> (professor, HttpStatus.OK);"
     }
 
     @DeleteMapping("/{id}")
@@ -75,5 +78,16 @@ public class ProfessorAPIController {
         }
         return new ResponseEntity<Professor> (professor, HttpStatus.OK);
     }
+
+    @Topic(name = "${app.component.topic.professor}", pubsubName = "${app.component.service}")
+    @PostMapping(path = "/event", consumes = MediaType.ALL_VALUE)
+    public ResponseEntity<Professor> atualizarProfessor(@RequestBody(required = false) CloudEvent<Professor> cloudEvent){
+        Professor professor = service.update(cloudEvent.getData());
+        System.out.println("EVENT" + professor.getNome());
+        return 
+            new ResponseEntity<Professor>
+            (professor, HttpStatus.OK);
+    }
+    
     
 }

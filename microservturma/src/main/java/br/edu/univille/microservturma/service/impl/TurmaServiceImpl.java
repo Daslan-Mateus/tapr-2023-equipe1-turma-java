@@ -24,6 +24,7 @@ public class TurmaServiceImpl implements TurmaService {
     @Value("${app.component.service}")
 	private String PUBSUB_NAME;
 
+
     @Override
     public List<Turma> getAll() {
         var iterador = repository.findAll();
@@ -45,8 +46,9 @@ public class TurmaServiceImpl implements TurmaService {
     @Override
     public Turma saveNew(Turma turma) {
         turma.setIdTurma(null);
+        turma = repository.save(turma);
         publicarAtualizacao(turma);
-        return repository.save(turma);
+        return turma;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class TurmaServiceImpl implements TurmaService {
             //Atualizar cada atributo do objeto antigo 
             turmaAntigo.setIdTurma(turma.getIdTurma());
             turmaAntigo = repository.save(turmaAntigo);
-            
+            publicarAtualizacao(turmaAntigo);
             return turmaAntigo;
         }
         return null;
