@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.edu.univille.microservturma.entity.Professor;
 import br.edu.univille.microservturma.service.ProfessorService;
 import io.dapr.Topic;
@@ -64,7 +63,7 @@ public class ProfessorAPIController {
         if(professor == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Professor> (professor, HttpStatus.OK);"
+        return new ResponseEntity<Professor> (professor, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -81,12 +80,13 @@ public class ProfessorAPIController {
 
     @Topic(name = "${app.component.topic.professor}", pubsubName = "${app.component.service}")
     @PostMapping(path = "/event", consumes = MediaType.ALL_VALUE)
-    public ResponseEntity<Professor> atualizarProfessor(@RequestBody(required = false) CloudEvent<Professor> cloudEvent){
-        Professor professor = service.update(cloudEvent.getData());
+
+    public ResponseEntity<Professor> atualizarProfessor(@RequestBody(required = false) CloudEvent<Professor> cloudEvent)
+    {
+        var professor = service.update(cloudEvent.getData());
         System.out.println("EVENT" + professor.getNome());
         return 
-            new ResponseEntity<Professor>
-            (professor, HttpStatus.OK);
+            new ResponseEntity<Professor>(professor, HttpStatus.OK);
     }
     
     

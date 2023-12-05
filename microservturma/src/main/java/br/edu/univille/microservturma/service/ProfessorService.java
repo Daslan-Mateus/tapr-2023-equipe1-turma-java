@@ -9,5 +9,6 @@ public interface ProfessorService {
     public Professor getById(String id);
     public Professor saveNew(Professor professor);
     public Professor update(String id, Professor professor);
+    public Professor update( Professor professor);
     public Professor delete(String id);
 }

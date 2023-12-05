@@ -84,4 +84,10 @@ public class ProfessorServiceImpl implements ProfessorService {
 					TOPIC_NAME,
 					professor).block();
     }
+
+    @Override
+    public Professor update(Professor professor) {
+        return repository.save(professor); 
+     
+    }
 }
